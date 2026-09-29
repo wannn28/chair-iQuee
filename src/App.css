@@ -161,6 +161,7 @@
 
 @media (max-width: 640px) {
   .viewer {
+    height: min(54svh, 420px);
     min-height: min(54svh, 420px);
   }
 

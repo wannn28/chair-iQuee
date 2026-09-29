@@ -34,8 +34,11 @@
 }
 
 .viewer {
-  flex: 1;
-  min-height: min(62svh, 520px);
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  height: min(62svh, 560px);
+  min-height: min(62svh, 560px);
   border-radius: 2px;
   overflow: hidden;
   background:
@@ -44,7 +47,17 @@
   animation: viewer-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.viewer-canvas {
+/* R3F wraps the canvas in a div — force that wrapper to fill the viewer. */
+.viewer > div {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.viewer-canvas,
+.viewer canvas {
+  display: block;
   width: 100% !important;
   height: 100% !important;
   touch-action: none;

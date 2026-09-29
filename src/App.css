@@ -1,0 +1,117 @@
+.page {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1.25rem 1.5rem 1.75rem;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 18%, #f7f4ef 0%, transparent 55%),
+    linear-gradient(180deg, #efece6 0%, #ddd7cd 100%);
+  color: #2a2926;
+}
+
+.demo-label {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  margin: 0;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6a665f;
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.viewer {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: min(68svh, 560px);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.viewer-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  touch-action: none;
+}
+
+.swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  padding: 0.25rem 0 0;
+}
+
+.swatch-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.swatch {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid rgba(42, 41, 38, 0.18);
+  border-radius: 2px;
+  cursor: pointer;
+  appearance: none;
+  transition: outline-color 160ms ease, transform 160ms ease;
+}
+
+.swatch:hover {
+  transform: translateY(-1px);
+}
+
+.swatch.is-active {
+  outline: 2px solid #2a2926;
+  outline-offset: 2px;
+}
+
+.swatch-name {
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #2a2926;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1rem 1rem 1.25rem;
+  }
+
+  .demo-label {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .stage {
+    padding-top: 1.75rem;
+    gap: 1rem;
+  }
+
+  .viewer {
+    max-height: min(58svh, 420px);
+  }
+}

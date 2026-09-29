@@ -1,7 +1,8 @@
 import { Canvas } from '@react-three/fiber'
-import { Bounds, ContactShadows, OrbitControls } from '@react-three/drei'
+import { ContactShadows, OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
 import { Chair } from './Chair'
+import { Fit } from './Fit'
 
 type ViewerProps = {
   color: string
@@ -11,7 +12,7 @@ export function Viewer({ color }: ViewerProps) {
   return (
     <Canvas
       className="viewer-canvas"
-      camera={{ position: [2.8, 2.1, 3.6], fov: 35 }}
+      camera={{ position: [2, 1.5, 2.5], fov: 35 }}
       gl={{ antialias: true }}
       shadows
     >
@@ -25,15 +26,15 @@ export function Viewer({ color }: ViewerProps) {
       />
       <directionalLight position={[-4, 5, -2]} intensity={0.4} />
       <Suspense fallback={null}>
-        <Bounds fit clip observe margin={1.35}>
+        <Fit margin={1.5}>
           <Chair color={color} />
-        </Bounds>
+        </Fit>
       </Suspense>
       <ContactShadows
         position={[0, -0.24, 0]}
-        opacity={0.32}
-        scale={6}
-        blur={2.6}
+        opacity={0.3}
+        scale={4}
+        blur={2.5}
         far={2}
       />
       <OrbitControls
@@ -42,7 +43,7 @@ export function Viewer({ color }: ViewerProps) {
         enableZoom={true}
         enableRotate={true}
         minPolarAngle={Math.PI / 6}
-        maxPolarAngle={Math.PI / 2.05}
+        maxPolarAngle={Math.PI / 2.1}
       />
     </Canvas>
   )

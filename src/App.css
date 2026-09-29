@@ -1,0 +1,158 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 1.75rem;
+}
+
+.demo-label {
+  position: absolute;
+  top: 1.15rem;
+  left: clamp(1rem, 3vw, 2rem);
+  z-index: 2;
+  margin: 0;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  animation: label-in 0.7s ease-out both;
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+
+.viewer {
+  flex: 1;
+  min-height: min(62svh, 520px);
+  border-radius: 2px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, #eef2f6 0%, transparent 70%),
+    linear-gradient(165deg, #cfd6df 0%, #e4e8ee 45%, #bcc5d0 100%);
+  animation: viewer-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.viewer-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.75rem;
+  min-height: 2.5rem;
+  animation: swatches-in 0.8s ease-out 0.15s both;
+}
+
+.swatch-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.swatch {
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 1.5px solid rgba(28, 34, 42, 0.18);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.swatch:hover {
+  transform: scale(1.08);
+}
+
+.swatch:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.swatch.is-active {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink);
+  transform: scale(1.06);
+}
+
+.swatch-name {
+  font-family: 'DM Sans Variable', 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  animation: name-in 0.28s ease-out both;
+}
+
+@keyframes label-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes viewer-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes swatches-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes name-in {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .viewer {
+    min-height: min(54svh, 420px);
+  }
+
+  .swatch {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}

@@ -36,7 +36,7 @@ export function Chair({ color }: ChairProps) {
 
   return (
     <Center>
-      <primitive object={clone} scale={2.4} />
+      <primitive object={clone} />
     </Center>
   )
 }
